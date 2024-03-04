@@ -3,9 +3,11 @@ import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { background, photoURL } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -14,7 +16,6 @@ const Login = () => {
   const password = useRef(null);
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
 
   const toggleSingInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -38,13 +39,11 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          console.log(name.current.value);
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/90746836?v=4"
+            displayName: name.current.value, photoURL: photoURL
           }).then(() => {
             const { uid, email, displayName, photoURL } = auth.currentUser;
             dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }))
-            navigate("/browse");
           }).catch((error) => {
             setErrorMessage(error.message);
           });
@@ -62,8 +61,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          alert("Signed In");
-          navigate("/browse");
+          toast("Signed In");
           // ...
         })
         .catch((error) => {
@@ -81,7 +79,7 @@ const Login = () => {
         <Header />
         <img
           className="w-[1920px] h-screen"
-          src="https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png"
+          src={background}
           alt="background"
         />
       </div>
