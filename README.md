@@ -29,3 +29,4 @@
 - fetch data for trailer video
 - embedded the youtube video and make it autoplay and mute
 - added tailwind classes to make main container look awersome
+- secondary component
