@@ -5,8 +5,6 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { background, photoURL } from "../utils/constants";
 
 const Login = () => {
@@ -61,16 +59,15 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          toast("Signed In");
+          console.log(user);
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + errorMessage);
+          setErrorMessage(errorMessage);
         });
     }
-    document.getElementsByTagName("input").value = " ";
   };
 
   return (

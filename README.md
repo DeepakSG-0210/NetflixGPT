@@ -22,3 +22,10 @@
 - fetch movies from TMDB API
 - register tmdb api and create an app & get access
 - getting the movies that are running now 
+- custom hook for now playing movies
+- create a movie slice 
+- update store with movies data
+- planning for main container and secondary container
+- fetch data for trailer video
+- embedded the youtube video and make it autoplay and mute
+- added tailwind classes to make main container look awersome
