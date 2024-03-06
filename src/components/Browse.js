@@ -1,11 +1,14 @@
-import Header from './Header'
-import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
-import MainContainer from './MainContainer';
-import SecondaryContainer from './SecondaryContainer';
+import Header from "./Header";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import usePopularMovies from "../hooks/usePopularMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
+import useTrendingMovies from "../hooks/useTrendingMovies";
 const Browse = () => {
   // Fetch data TMDB api and update the store
   useNowPlayingMovies();
-
+  usePopularMovies();
+  useTrendingMovies();
   return (
     <div>
       <Header />
@@ -20,7 +23,7 @@ const Browse = () => {
           - Cards * n
       */}
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;

@@ -30,3 +30,8 @@
 - embedded the youtube video and make it autoplay and mute
 - added tailwind classes to make main container look awersome
 - secondary component
+- movie list
+- movie card
+- tmdb image cdn
+- better ui
+- popular & trending movie custom hook
